@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./Navbar.css";
 
 
-export default function Navbar({ brand = "MyBrand", links = null }) {
+export default function Navbar({ brand = "Education Management System", links = null }) {
   const [open, setOpen] = useState(false);
 
   const defaultLinks = [
     { name: "Home", href: "#" },
-    { name: "Features", href: "#" },
-    { name: "Pricing", href: "#" },
-    { name: "Docs", href: "#" },
+    { name: "Dashboard", href: "#" },
+    { name: "Users", href: "#" },
+    { name: "Courses", href: "#" },
   ];
 
   const navLinks = links || defaultLinks;
