@@ -1,8 +1,14 @@
 import React from "react";
+import Navbar from "../components/Navbar";
+
 
 function About() {
   return (
+    <>
+    <Navbar />
+
     <div className="container mt-5">
+    
       <div className="p-5 bg-light rounded-3 shadow-lg text-center">
         <h1>About EMS</h1>
         <p className="lead mt-3">
@@ -13,6 +19,7 @@ function About() {
         </p>
       </div>
     </div>
+    </>
   );
 }
 

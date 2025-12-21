@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -19,6 +20,8 @@ function Profile() {
   if (!user) return <p className="text-center mt-5">Loading profile...</p>;
 
   return (
+    <>
+    <div className="row"> <Navbar /></div>
     <div className="container mt-5">
       <div className="p-5 bg-light rounded-3 shadow-lg">
         <h1 className="text-center mb-4">My Profile</h1>
@@ -29,6 +32,7 @@ function Profile() {
         </ul>
       </div>
     </div>
+    </>
   );
 }
 

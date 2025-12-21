@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   
@@ -17,16 +18,20 @@ export default function Navbar() {
         <a class="nav-link active" aria-current="page" href="#">Home/Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        {/* <a class="nav-link" href="#">About</a> */}
+        <Link to="/about" className="nav-link">About</Link>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact/Help</a>
+        {/* <a class="nav-link" href="#">Contact/Help</a> */}
+         <Link to="/contact" className="nav-link">Contact/Help</Link>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        {/* <a class="nav-link" href="#">Profile</a> */}
+         <Link to="/profile" className="nav-link">Profile</Link>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
+        {/* <a class="nav-link" href="#">Logout</a> */}
+         <Link to="/" className="nav-link">Logout</Link>
       </li>
     </ul>
     <form class="d-flex" role="search">

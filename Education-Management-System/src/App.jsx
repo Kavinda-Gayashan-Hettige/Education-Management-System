@@ -17,12 +17,15 @@ function App() {
      {/* <Navbar /> */}
     {/* <About /> */}
     {/* <Contact /> */}
-    <Profile />
+    {/* <Profile /> */}
 
-     {/* <Routes>
+     <Routes>
       <Route path="/" element={<Login />}></Route>
       <Route path="/home" element={<Home />}></Route>
-     </Routes> */}
+      <Route path="/about" element={<About />}></Route>
+      <Route path="/contact" element={<Contact />}></Route>
+      <Route path="/profile" element={<Profile />}></Route>
+     </Routes>
      
     </>
   )
