@@ -55,7 +55,16 @@ function Login() {
               Sign in
             </Link>
           </button>
+          <small className="text-muted d-block mt-1 text-center">
+            If you are a new user, please register first with sign-up button
+          </small>
 
+          <button className="btn btn-primary w-100 py-2" type="submit">
+
+            <Link to="/register" className="btn btn-primary w-100 py-2">
+              Sign up
+            </Link>
+          </button>
           <p className="mt-5 mb-3 text-body-secondary text-center">
             © 2025–2026
           </p>

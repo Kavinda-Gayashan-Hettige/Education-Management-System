@@ -5,6 +5,7 @@ import Login from "./pages/Login"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Profile from "./pages/Profile"
+import Register from "./pages/Register"
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route path="/about" element={<About />}></Route>
       <Route path="/contact" element={<Contact />}></Route>
       <Route path="/profile" element={<Profile />}></Route>
+       <Route path="/register" element={<Register />}></Route>
      </Routes>
      
     </>
