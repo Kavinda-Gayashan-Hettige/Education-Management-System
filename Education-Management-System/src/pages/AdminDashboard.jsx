@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 function AdminDashboard() {
     const { auth } = useAuth();
     
-    // මෙම Component එකට පිවිසිය හැක්කේ Role: ADMIN ට පමණි
+   
     if (auth.role !== 'ADMIN') return <div className="alert alert-danger">Access Denied: ADMIN Only.</div>;
     
     return (

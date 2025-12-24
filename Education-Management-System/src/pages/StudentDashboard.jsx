@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 function StudentDashboard() {
     const { auth } = useAuth();
     
-    // මෙම Component එකට පිවිසිය හැක්කේ Role: STUDENT ට පමණි
+   
     if (auth.role !== 'STUDENT') return <div className="alert alert-danger">Access Denied.</div>;
 
     return (

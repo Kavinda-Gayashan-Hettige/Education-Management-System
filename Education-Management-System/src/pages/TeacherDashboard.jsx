@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 function TeacherDashboard() {
     const { auth } = useAuth();
     
-    // මෙම Component එකට පිවිසිය හැක්කේ Role: TEACHER හෝ ADMIN ට පමණි
+  
     if (auth.role !== 'TEACHER' && auth.role !== 'ADMIN') return <div className="alert alert-danger">Access Denied.</div>;
     
     return (

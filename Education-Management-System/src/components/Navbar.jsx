@@ -5,7 +5,7 @@ export default function Navbar() {
   const { auth, logout } = useAuth(); 
   const { isAuthenticated, role, userName } = auth;
 
-  // Role එක අනුව dashboard Links සකස් කිරීම
+  
   const getDashboardLinks = () => {
     if (!isAuthenticated) return null; 
 
@@ -58,7 +58,7 @@ export default function Navbar() {
                     <li className="nav-item">
                         <Link to="/home" className="nav-link">Home</Link>
                     </li>
-                    {getDashboardLinks()} {/* Role-specific links */}
+                    {getDashboardLinks()} 
                 </>
             )}
           </ul>

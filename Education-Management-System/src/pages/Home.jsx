@@ -6,10 +6,10 @@ function Home() {
     const [welcomeMessage, setWelcomeMessage] = useState('Loading...');
     const [error, setError] = useState(null);
 
-    // Backend එකේ Secured Endpoint එකක් Call කරන්නේ කෙසේද යන්න පෙන්වීමට
+  
     useEffect(() => {
         const fetchRoleData = async () => {
-            // Role එක අනුව Call කරන Endpoint එක වෙනස් වේ
+           
             let endpoint = '';
             if (auth.role === 'ADMIN') {
                 endpoint = '/users/admin/data'; 
@@ -23,12 +23,12 @@ function Home() {
             }
 
             try {
-                // Token එක Header එකේ යවා Secured Endpoint එකට Call කරයි
+              
                 const response = await axiosInstance.get(endpoint);
                 setWelcomeMessage(response.data);
             } catch (err) {
                 console.error("Failed to fetch role data:", err);
-                // 403 Forbidden වැලැක්වීම සඳහා Home එකට direct access දුන්නද, backend error පෙන්වයි
+               
                 setError("Could not load specific role data. You may lack permission.");
             }
         };

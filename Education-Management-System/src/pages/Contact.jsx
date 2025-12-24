@@ -26,7 +26,7 @@ function Contact() {
       <div className="p-5 bg-light rounded-3 shadow-lg">
         <h1 className="text-center mb-4">Contact Us</h1>
 
-        {/* Help / Info Section */}
+       
         <div className="mb-4 text-center">
           <h5>Need Help?</h5>
           <p className="text-muted">

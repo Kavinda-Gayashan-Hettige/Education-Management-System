@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
-// Base URL එකක් සහිත Axios Instance එක
+
 export const axiosInstance = axios.create({
     baseURL: 'http://localhost:9090', 
 });
@@ -19,13 +19,13 @@ export const AuthProvider = ({ children }) => {
         const isAuthenticated = !!token;
 
         if (isAuthenticated) {
-             // 🚨 Reload වලදී Token එක Header වලට එකතු කිරීම
+            
             axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         }
         return { token, role, userName, isAuthenticated };
     });
 
-    // Login Method
+   
     const login = async (username, password) => {
         try {
             const response = await axiosInstance.post('/users/login', {
@@ -35,10 +35,10 @@ export const AuthProvider = ({ children }) => {
 
             const { token, role, userName } = response.data;
 
-            // Header එක සකස් කිරීම
+          
             axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             
-            // State සහ Local Storage යාවත්කාලීන කිරීම
+           
             setAuth({ token, role, userName, isAuthenticated: true });
             localStorage.setItem('token', token);
             localStorage.setItem('role', role);
@@ -48,12 +48,12 @@ export const AuthProvider = ({ children }) => {
             return true;
         } catch (error) {
             console.error("Login failed:", error);
-            // 🚨 Backend එකෙන් එන error message එක පෙන්වීම
+            
             throw error.response?.data?.message || error.message || "Login failed."; 
         }
     };
 
-    // Logout Method
+    
     const logout = () => {
         delete axiosInstance.defaults.headers.common['Authorization'];
         localStorage.clear();

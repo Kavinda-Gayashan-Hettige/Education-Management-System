@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 function ParentDashboard() {
     const { auth } = useAuth();
     
-    // මෙම Component එකට පිවිසිය හැක්කේ Role: PARENT ට පමණි
+   
     if (auth.role !== 'PARENT') return <div className="alert alert-danger">Access Denied.</div>;
     
     return (

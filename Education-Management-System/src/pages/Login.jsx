@@ -19,7 +19,7 @@ function Login() {
         try {
             await login(username, password); 
         } catch (err) {
-            // 🚨 Backend error message එක handle කරයි
+           
             setError(err.toString().includes("401") ? "Invalid Credentials or Account Deactivated." : err.toString()); 
         }
     };
@@ -35,7 +35,7 @@ function Login() {
                 
                 {error && <div className="alert alert-danger text-center">{error}</div>}
 
-                {/* Username Input */}
+              
                 <div className="form-floating mb-3">
                     <input
                         type="text"
@@ -48,7 +48,7 @@ function Login() {
                     <label>Username</label>
                 </div>
 
-                {/* Password Input */}
+               
                 <div className="form-floating mb-3">
                     <input
                         type="password"
