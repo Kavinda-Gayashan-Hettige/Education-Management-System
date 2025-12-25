@@ -12,20 +12,7 @@ function Login() {
     
    
     const handleLoginSuccess = (role) => {
-        switch (role) {
-            case 'ADMIN':
-                navigate('/admin'); 
-                break;
-            case 'TEACHER':
-                navigate('/teacher-dashboard'); 
-                break;
-            case 'STUDENT':
-                navigate('/portal'); 
-                break;
-            default:
-                
-                navigate('/courses'); 
-        }
+       navigate('/home');
     };
 
 

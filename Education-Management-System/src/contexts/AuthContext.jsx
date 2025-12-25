@@ -9,7 +9,7 @@ export const useAuth = () => useContext(AuthContext);
 
 
 export const axiosInstance = axios.create({
-    baseURL: 'http://localhost:9090', 
+    baseURL: 'http://localhost:8080', 
 });
 
 export const AuthProvider = ({ children }) => {

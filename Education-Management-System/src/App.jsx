@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -6,13 +7,15 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import CourseManagement from './components/CourseManagement';
 
-
-
-const Home = () => <h1>Welcome to the EMS Dashboard!</h1>;
-const AdminPage = () => <h1>Admin Management Panel</h1>;
-const TeacherPage = () => <h1>Teacher Course Management</h1>;
-const StudentPage = () => <h1>Student Schedule and Grades</h1>;
-
+import Home from './pages/Home';
+import AdminPage from './pages/AdminPage'; 
+import TeacherPage from './pages/TeacherPage';
+import StudentSchedule from './pages/StudentSchedule';
+import StudentGrades from './pages/StudentGrades';
+import Reports from './pages/Reports';
+import Attendance from './pages/Attendance';
+import ParentPage from './pages/ParentPage';
+import Messages from './pages/Messages';
 
 
 const ProtectedRoute = ({ allowedRoles }) => { 
@@ -57,14 +60,15 @@ function AppContent() {
                     <Route path="/unauthorized" element={<h1>403 - Access Denied</h1>} />
                     <Route path="*" element={<h1>404 - Page Not Found</h1>} />
                     
+                    
                   
                     <Route element={<ProtectedRoute allowedRoles={['ADMIN', 'TEACHER', 'STUDENT', 'PARENT']} />}>
                         <Route path="/home" element={<Home />} />
+                       
                     </Route>
 
 
                    
-
                    
                     <Route element={<ProtectedRoute allowedRoles={['ADMIN', 'TEACHER', 'STUDENT']} />}>
                         <Route path="/courses" element={<CourseManagement />} /> 
@@ -73,16 +77,26 @@ function AppContent() {
                    
                     <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
                         <Route path="/admin/management" element={<AdminPage />} />
+                        <Route path='/admin/reports' element={<Reports />} />
+                        <Route path='/admin/course' element={<CourseManagement />}/>
                     </Route>
 
                    
                     <Route element={<ProtectedRoute allowedRoles={['ADMIN', 'TEACHER']} />}>
                         <Route path="/teacher/courses" element={<TeacherPage />} />
+                        <Route path='/teacher/attendance' element={<Attendance />}/>
                     </Route>
                     
                   
                     <Route element={<ProtectedRoute allowedRoles={['STUDENT']} />}>
-                        <Route path="/student/grades" element={<StudentPage />} />
+                        <Route path="/student/grades" element={<StudentGrades />} />
+                        <Route path="/student/schedule" element={<StudentSchedule />} />
+                        
+                    </Route>
+
+                     <Route element={<ProtectedRoute allowedRoles={['PARENT']} />}>
+                        <Route path="/parent/children" element={<ParentPage />} />
+                        <Route path="/parent/messages" element={<Messages />} />
                     </Route>
 
                 </Routes>

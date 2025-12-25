@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import Footer from '../components/Footer';
+
+
 
 function Home() {
     const { auth, axiosInstance } = useAuth();
     const [welcomeMessage, setWelcomeMessage] = useState('Loading...');
     const [error, setError] = useState(null);
-
+  
   
     useEffect(() => {
         const fetchRoleData = async () => {
@@ -37,7 +40,9 @@ function Home() {
     }, [auth.role, auth.userName, axiosInstance]);
 
     return (
+        <>
         <div className="text-center p-5 bg-info-subtle rounded-3">
+            
             <h1>Welcome Back, {auth.userName}!</h1>
             <p className="lead">Your role is: **{auth.role}**</p>
             
@@ -51,6 +56,10 @@ function Home() {
             </div>
             <p className="mt-3">Use the navigation bar above to access role-specific sections.</p>
         </div>
+       <div className="row"><img src="src\assets\ems-bg.png" alt="EMS Background" style={{ maxWidth: '100%' }} /></div>
+      
+        <div className="row"><Footer /></div>
+        </>
     );
 }
 

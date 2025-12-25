@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
-function AdminDashboard() {
+function AdminPage() {
     const { auth } = useAuth();
     
    
@@ -17,4 +17,4 @@ function AdminDashboard() {
     );
 }
 
-export default AdminDashboard;
+export default AdminPage;

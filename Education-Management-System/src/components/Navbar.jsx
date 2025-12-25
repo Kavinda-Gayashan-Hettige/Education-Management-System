@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"; 
 
+
 export default function Navbar() {
   const { auth, logout } = useAuth(); 
   const { isAuthenticated, role, userName } = auth;
@@ -15,6 +16,7 @@ export default function Navbar() {
           <>
             <li className="nav-item"><Link to="/admin/management" className="nav-link">User Management</Link></li>
             <li className="nav-item"><Link to="/admin/reports" className="nav-link">Reports</Link></li>
+             <li className="nav-item"><Link to="/admin/course" className="nav-link">Courses</Link></li>
           </>
         );
       case 'TEACHER':
@@ -29,6 +31,7 @@ export default function Navbar() {
           <>
             <li className="nav-item"><Link to="/student/schedule" className="nav-link">Schedule</Link></li>
             <li className="nav-item"><Link to="/student/grades" className="nav-link">Grades</Link></li>
+            
           </>
         );
       case 'PARENT':

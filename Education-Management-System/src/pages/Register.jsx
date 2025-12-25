@@ -67,6 +67,7 @@ function Register() {
                         <option value="STUDENT">Student</option>
                         <option value="TEACHER">Teacher</option>
                         <option value="ADMIN">Admin</option>
+                        <option value="PARENT">Parent</option>
                     </select>
                 </div>
                 <button type="submit" className="btn btn-primary w-100">Register</button>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from "../contexts/AuthContext";
 
-function TeacherDashboard() {
+function TeacherPage() {
     const { auth } = useAuth();
     
   
@@ -17,4 +17,4 @@ function TeacherDashboard() {
     );
 }
 
-export default TeacherDashboard;
+export default TeacherPage;

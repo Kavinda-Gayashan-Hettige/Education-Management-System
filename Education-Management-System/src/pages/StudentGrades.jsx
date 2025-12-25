@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
-function StudentDashboard() {
+function StudentGrades() {
     const { auth } = useAuth();
     
    
@@ -9,7 +9,7 @@ function StudentDashboard() {
 
     return (
         <div className="p-4 bg-success-subtle border border-success rounded-3">
-            <h2><i className="bi bi-mortarboard-fill me-2"></i>Student Schedule and Grades</h2>
+            <h2><i className="bi bi-mortarboard-fill me-2"></i>Student Grades</h2>
             <p className="lead">Welcome, **{auth.userName}**! View your academic progress.</p>
             <hr />
             <p>Student Tasks: Check Timetable, View Grades, Submit Assignments.</p>
@@ -17,4 +17,4 @@ function StudentDashboard() {
     );
 }
 
-export default  StudentDashboard;
+export default  StudentGrades;

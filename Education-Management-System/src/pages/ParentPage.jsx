@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
-function ParentDashboard() {
+function ParentPage() {
     const { auth } = useAuth();
     
    
@@ -17,4 +17,4 @@ function ParentDashboard() {
     );
 }
 
-export default ParentDashboard;
+export default ParentPage;
