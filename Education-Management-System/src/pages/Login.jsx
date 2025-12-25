@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; 
 import { useAuth } from "../contexts/AuthContext"; 
 
 function Login() {
@@ -7,6 +7,27 @@ function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const { login } = useAuth(); 
+    const navigate = useNavigate(); 
+
+    
+   
+    const handleLoginSuccess = (role) => {
+        switch (role) {
+            case 'ADMIN':
+                navigate('/admin'); 
+                break;
+            case 'TEACHER':
+                navigate('/teacher-dashboard'); 
+                break;
+            case 'STUDENT':
+                navigate('/portal'); 
+                break;
+            default:
+                
+                navigate('/courses'); 
+        }
+    };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -17,10 +38,19 @@ function Login() {
         }
 
         try {
-            await login(username, password); 
+           
+            const role = await login(username, password); 
+            
+           
+            if (role) {
+                handleLoginSuccess(role);
+            }
+            
         } catch (err) {
            
-            setError(err.toString().includes("401") ? "Invalid Credentials or Account Deactivated." : err.toString()); 
+            const errorMessage = (typeof err === 'string' && err.includes("401")) ? "Invalid Credentials. Please try again." : err.toString();
+            setError(errorMessage); 
+            
         }
     };
 
@@ -35,7 +65,7 @@ function Login() {
                 
                 {error && <div className="alert alert-danger text-center">{error}</div>}
 
-              
+                
                 <div className="form-floating mb-3">
                     <input
                         type="text"
@@ -48,7 +78,7 @@ function Login() {
                     <label>Username</label>
                 </div>
 
-               
+                
                 <div className="form-floating mb-3">
                     <input
                         type="password"

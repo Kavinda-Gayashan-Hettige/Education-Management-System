@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
@@ -27,11 +27,9 @@ const ProtectedRoute = ({ allowedRoles }) => {
     const userRole = auth.role;
     const isAuthorized = allowedRoles && allowedRoles.includes(userRole);
 
-    if (isAuthorized) {
-       
+   if (isAuthorized) {
         return <Outlet />; 
     } else {
-       
         return <Navigate to="/unauthorized" replace />;
     }
 };
@@ -53,24 +51,40 @@ function AppContent() {
             <div className="container mt-4">
                 <Routes>
 
+                  
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/unauthorized" element={<h1>403 - Access Denied</h1>} />
-
-
-                    <Route path="/home" element={<ProtectedRoute element={Home} />} />
-
-                    <Route element={<ProtectedRoute allowedRoles={['ADMIN', 'TEACHER', 'STUDENT']} />}>
-                        <Route path="/courses" element={<CourseManagement />} />
+                    <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+                    
+                  
+                    <Route element={<ProtectedRoute allowedRoles={['ADMIN', 'TEACHER', 'STUDENT', 'PARENT']} />}>
+                        <Route path="/home" element={<Home />} />
                     </Route>
 
 
-                    <Route path="/admin/management" element={<ProtectedRoute element={AdminPage} allowedRoles={['ADMIN']} />} />
-                    <Route path="/teacher/courses" element={<ProtectedRoute element={TeacherPage} allowedRoles={['ADMIN', 'TEACHER']} />} />
-                    <Route path="/student/grades" element={<ProtectedRoute element={StudentPage} allowedRoles={['STUDENT']} />} />
+                   
 
+                   
+                    <Route element={<ProtectedRoute allowedRoles={['ADMIN', 'TEACHER', 'STUDENT']} />}>
+                        <Route path="/courses" element={<CourseManagement />} /> 
+                    </Route>
 
-                    <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+                   
+                    <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
+                        <Route path="/admin/management" element={<AdminPage />} />
+                    </Route>
+
+                   
+                    <Route element={<ProtectedRoute allowedRoles={['ADMIN', 'TEACHER']} />}>
+                        <Route path="/teacher/courses" element={<TeacherPage />} />
+                    </Route>
+                    
+                  
+                    <Route element={<ProtectedRoute allowedRoles={['STUDENT']} />}>
+                        <Route path="/student/grades" element={<StudentPage />} />
+                    </Route>
+
                 </Routes>
             </div>
         </>
