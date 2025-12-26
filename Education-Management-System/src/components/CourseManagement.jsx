@@ -2,51 +2,45 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext'; 
 import CourseCard from './CourseCard'; 
 import AddCourseForm from './AddCourseForm'; 
+import axios from 'axios'; 
+
+const BASE_URL = 'http://localhost:8080'; 
 
 function CourseManagement() {
-    const { auth, axiosInstance } = useAuth();
+    const { auth, axiosInstance } = useAuth(); 
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-   
     const isAdmin = auth.role === 'ADMIN'; 
-    const isStudentOrTeacher = auth.role === 'STUDENT' || auth.role === 'TEACHER';
-
 
     
     useEffect(() => {
-       
+        
         const fetchCourses = async () => {
             try {
-               
-                const response = await axiosInstance.get('/api/v1/courses');
+                
+                const response = await axios.get(`${BASE_URL}/courses/get-all`); 
                 setCourses(response.data);
                 setLoading(false);
             } catch (err) {
-                
-                setError("Failed to fetch courses. Check Server or Authentication Status.");
+                setError("Failed to fetch courses. Check Server Status.");
                 setLoading(false);
                 console.error("Course fetch error:", err);
             }
         };
+        
+       
+        fetchCourses(); 
 
-        if (auth.isAuthenticated) {
-            fetchCourses();
-        } else {
-            setLoading(false);
-            setError("Please log in to view courses.");
-        }
-    }, [auth.isAuthenticated, axiosInstance]);
-
+    }, []); 
 
     
     const handleAddCourse = async (courseData) => {
+        
         try {
+            const response = await axiosInstance.post('/courses/add', courseData);
             
-            const response = await axiosInstance.post('/api/v1/courses', courseData);
-            
-           
             setCourses([...courses, response.data]); 
             alert(`Course '${response.data.name}' added successfully!`);
         } catch (err) {
@@ -57,18 +51,14 @@ function CourseManagement() {
     };
 
 
-  
     const handleDeleteCourse = async (courseId) => {
-       
         if (!window.confirm("Are you sure you want to delete this course?")) {
             return;
         }
 
         try {
-          
-            await axiosInstance.delete(`/api/v1/courses/${courseId}`);
+            await axiosInstance.delete(`/courses/delete/${courseId}`);
             
-           
             setCourses(courses.filter(course => course.id !== courseId)); 
             alert(`Course ID ${courseId} deleted successfully.`);
         } catch (err) {
@@ -87,11 +77,11 @@ function CourseManagement() {
             <h2 className="mb-4 text-primary">
                 {isAdmin ? 'Admin Course Management' : 'Available Courses'}
             </h2>
-            <p className="lead">Welcome, {auth.userName}! Your Role: <strong>{auth.role}</strong></p>
+          
+            {auth.isAuthenticated && <p className="lead">Welcome, {auth.userName}! Your Role: <strong>{auth.role}</strong></p>}
             
             <hr />
 
-          
             {isAdmin && (
                 <div className="mb-5 p-4 border rounded bg-light">
                     <h4>Add New Course</h4>
@@ -99,7 +89,7 @@ function CourseManagement() {
                 </div>
             )}
 
-          
+            
             <h3 className="mb-4">Course List ({courses.length})</h3>
             
             <div className="row">

@@ -16,7 +16,7 @@ export default function Navbar() {
           <>
             <li className="nav-item"><Link to="/admin/management" className="nav-link">User Management</Link></li>
             <li className="nav-item"><Link to="/admin/reports" className="nav-link">Reports</Link></li>
-             <li className="nav-item"><Link to="/admin/course" className="nav-link">Courses</Link></li>
+             <li className="nav-item"><Link to="/admin/courses" className="nav-link">Courses</Link></li>
           </>
         );
       case 'TEACHER':
@@ -31,7 +31,7 @@ export default function Navbar() {
           <>
             <li className="nav-item"><Link to="/student/schedule" className="nav-link">Schedule</Link></li>
             <li className="nav-item"><Link to="/student/grades" className="nav-link">Grades</Link></li>
-            
+            <li className="nav-item"><Link to="/student/courses" className="nav-link">Courses</Link></li>
           </>
         );
       case 'PARENT':

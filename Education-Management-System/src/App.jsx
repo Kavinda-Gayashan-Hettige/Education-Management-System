@@ -18,6 +18,7 @@ import ParentPage from './pages/ParentPage';
 import Messages from './pages/Messages';
 
 
+
 const ProtectedRoute = ({ allowedRoles }) => { 
     const { auth } = useAuth();
     
@@ -78,7 +79,7 @@ function AppContent() {
                     <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
                         <Route path="/admin/management" element={<AdminPage />} />
                         <Route path='/admin/reports' element={<Reports />} />
-                        <Route path='/admin/course' element={<CourseManagement />}/>
+                        <Route path='/admin/courses' element={<CourseManagement />}/>
                     </Route>
 
                    
@@ -91,7 +92,7 @@ function AppContent() {
                     <Route element={<ProtectedRoute allowedRoles={['STUDENT']} />}>
                         <Route path="/student/grades" element={<StudentGrades />} />
                         <Route path="/student/schedule" element={<StudentSchedule />} />
-                        
+                        <Route path='/student/courses' element={<CourseManagement />} />
                     </Route>
 
                      <Route element={<ProtectedRoute allowedRoles={['PARENT']} />}>
