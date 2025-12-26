@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 function StudentGrades() {
     const { auth } = useAuth();
     const [selectedSemester, setSelectedSemester] = useState('semester1');
-    
+
     if (auth.role !== 'STUDENT') return <div className="alert alert-danger">Access Denied.</div>;
 
     // Sample grades data
@@ -39,110 +39,110 @@ function StudentGrades() {
     return (
         <div className="container-fluid py-4">
             {/* Header */}
-           
-<div className="row mb-4">
-    <div className="col-12">
-        <div className="card shadow-sm border-0" style={{ 
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            color: 'white'
-        }}>
-            <div className="card-body">
-                <div className="row align-items-center">
-                    <div className="col-md-8">
-                        <h1 className="display-6 fw-bold mb-2">
-                            <i className="bi bi-trophy-fill me-3"></i>
-                            Your Grades & Academic Progress
-                        </h1>
-                        <p className="mb-0 opacity-75">
-                            Welcome back, <strong>{auth.userName}</strong>! Track your academic performance and achievements.
-                        </p>
-                    </div>
-                    <div className="col-md-4 text-end">
-                        <div className="bg-white text-dark p-3 rounded-3 shadow">
-                            <div className="d-flex justify-content-between align-items-center mb-2">
-                                <h4 className="mb-0">Current GPA</h4>
-                                <div className={`badge ${calculateAverage(selectedSemester) >= 75 ? 'bg-success' : calculateAverage(selectedSemester) >= 65 ? 'bg-warning' : 'bg-danger'} rounded-pill px-3 py-1`}>
-                                    {calculateAverage(selectedSemester) >= 75 ? 'Excellent' : calculateAverage(selectedSemester) >= 65 ? 'Good' : 'Needs Improvement'}
+
+            <div className="row mb-4">
+                <div className="col-12">
+                    <div className="card shadow-sm border-0" style={{
+                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                        color: 'white'
+                    }}>
+                        <div className="card-body">
+                            <div className="row align-items-center">
+                                <div className="col-md-8">
+                                    <h1 className="display-6 fw-bold mb-2">
+                                        <i className="bi bi-trophy-fill me-3"></i>
+                                        Your Grades & Academic Progress
+                                    </h1>
+                                    <p className="mb-0 opacity-75">
+                                        Welcome back, <strong>{auth.userName}</strong>! Track your academic performance and achievements.
+                                    </p>
+                                </div>
+                                <div className="col-md-4 text-end">
+                                    <div className="bg-white text-dark p-3 rounded-3 shadow">
+                                        <div className="d-flex justify-content-between align-items-center mb-2">
+                                            <h4 className="mb-0">Current GPA</h4>
+                                            <div className={`badge ${calculateAverage(selectedSemester) >= 75 ? 'bg-success' : calculateAverage(selectedSemester) >= 65 ? 'bg-warning' : 'bg-danger'} rounded-pill px-3 py-1`}>
+                                                {calculateAverage(selectedSemester) >= 75 ? 'Excellent' : calculateAverage(selectedSemester) >= 65 ? 'Good' : 'Needs Improvement'}
+                                            </div>
+                                        </div>
+                                        <h1 className="display-4 text-primary fw-bold mb-0">
+                                            {calculateAverage(selectedSemester)}
+                                        </h1>
+                                        <small className="text-muted">Out of 100</small>
+
+                                        {/* GPA Progress Indicator */}
+                                        <div className="mt-2">
+                                            <div className="d-flex justify-content-between mb-1">
+                                                <small>Performance</small>
+                                                <small>{calculateAverage(selectedSemester)}%</small>
+                                            </div>
+                                            <div className="progress" style={{ height: '8px' }}>
+                                                <div
+                                                    className={`progress-bar ${calculateAverage(selectedSemester) >= 75 ? 'bg-success' : calculateAverage(selectedSemester) >= 65 ? 'bg-warning' : 'bg-danger'}`}
+                                                    role="progressbar"
+                                                    style={{ width: `${calculateAverage(selectedSemester)}%` }}
+                                                    aria-valuenow={calculateAverage(selectedSemester)}
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                ></div>
+                                            </div>
+                                        </div>
+
+                                        {/* Semester Info */}
+                                        <div className="d-flex justify-content-between mt-3">
+                                            <div>
+                                                <small className="text-muted d-block">Semester</small>
+                                                <strong>{selectedSemester === 'semester1' ? 'Semester 1' : 'Semester 2'}</strong>
+                                            </div>
+                                            <div className="text-end">
+                                                <small className="text-muted d-block">Rank</small>
+                                                <strong>#5</strong>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <h1 className="display-4 text-primary fw-bold mb-0">
-                                {calculateAverage(selectedSemester)}
-                            </h1>
-                            <small className="text-muted">Out of 100</small>
-                            
-                            {/* GPA Progress Indicator */}
-                            <div className="mt-2">
-                                <div className="d-flex justify-content-between mb-1">
-                                    <small>Performance</small>
-                                    <small>{calculateAverage(selectedSemester)}%</small>
+
+                            {/* Additional Info Bar */}
+                            <div className="row mt-4">
+                                <div className="col-md-4">
+                                    <div className="d-flex align-items-center">
+                                        <div className="bg-white bg-opacity-25 p-2 rounded-circle me-3">
+                                            <i className="bi bi-award text-white"></i>
+                                        </div>
+                                        <div>
+                                            <small className="opacity-75">Highest Grade</small>
+                                            <h5 className="mb-0 text-white">A+ (96%)</h5>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="progress" style={{ height: '8px' }}>
-                                    <div 
-                                        className={`progress-bar ${calculateAverage(selectedSemester) >= 75 ? 'bg-success' : calculateAverage(selectedSemester) >= 65 ? 'bg-warning' : 'bg-danger'}`}
-                                        role="progressbar" 
-                                        style={{ width: `${calculateAverage(selectedSemester)}%` }}
-                                        aria-valuenow={calculateAverage(selectedSemester)} 
-                                        aria-valuemin="0" 
-                                        aria-valuemax="100"
-                                    ></div>
+                                <div className="col-md-4">
+                                    <div className="d-flex align-items-center">
+                                        <div className="bg-white bg-opacity-25 p-2 rounded-circle me-3">
+                                            <i className="bi bi-graph-up-arrow text-white"></i>
+                                        </div>
+                                        <div>
+                                            <small className="opacity-75">Improvement</small>
+                                            <h5 className="mb-0 text-white">+3.2% ↑</h5>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            {/* Semester Info */}
-                            <div className="d-flex justify-content-between mt-3">
-                                <div>
-                                    <small className="text-muted d-block">Semester</small>
-                                    <strong>{selectedSemester === 'semester1' ? 'Semester 1' : 'Semester 2'}</strong>
+                                <div className="col-md-4">
+                                    <div className="d-flex align-items-center">
+                                        <div className="bg-white bg-opacity-25 p-2 rounded-circle me-3">
+                                            <i className="bi bi-calendar-check text-white"></i>
+                                        </div>
+                                        <div>
+                                            <small className="opacity-75">Last Updated</small>
+                                            <h5 className="mb-0 text-white">Today, 10:30 AM</h5>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="text-end">
-                                    <small className="text-muted d-block">Rank</small>
-                                    <strong>#5</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                {/* Additional Info Bar */}
-                <div className="row mt-4">
-                    <div className="col-md-4">
-                        <div className="d-flex align-items-center">
-                            <div className="bg-white bg-opacity-25 p-2 rounded-circle me-3">
-                                <i className="bi bi-award text-white"></i>
-                            </div>
-                            <div>
-                                <small className="opacity-75">Highest Grade</small>
-                                <h5 className="mb-0 text-white">A+ (96%)</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="d-flex align-items-center">
-                            <div className="bg-white bg-opacity-25 p-2 rounded-circle me-3">
-                                <i className="bi bi-graph-up-arrow text-white"></i>
-                            </div>
-                            <div>
-                                <small className="opacity-75">Improvement</small>
-                                <h5 className="mb-0 text-white">+3.2% ↑</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="d-flex align-items-center">
-                            <div className="bg-white bg-opacity-25 p-2 rounded-circle me-3">
-                                <i className="bi bi-calendar-check text-white"></i>
-                            </div>
-                            <div>
-                                <small className="opacity-75">Last Updated</small>
-                                <h5 className="mb-0 text-white">Today, 10:30 AM</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
             {/* Quick Stats */}
             <div className="row mb-4">
@@ -208,13 +208,13 @@ function StudentGrades() {
                             <div className="d-flex justify-content-between align-items-center">
                                 <h5 className="mb-0">Select Semester</h5>
                                 <div className="btn-group">
-                                    <button 
+                                    <button
                                         className={`btn ${selectedSemester === 'semester1' ? 'btn-primary' : 'btn-outline-primary'}`}
                                         onClick={() => setSelectedSemester('semester1')}
                                     >
                                         Semester 1
                                     </button>
-                                    <button 
+                                    <button
                                         className={`btn ${selectedSemester === 'semester2' ? 'btn-primary' : 'btn-outline-primary'}`}
                                         onClick={() => setSelectedSemester('semester2')}
                                     >
@@ -271,12 +271,12 @@ function StudentGrades() {
                                                 </td>
                                                 <td>
                                                     <div className="progress" style={{ height: '20px', width: '100px' }}>
-                                                        <div 
+                                                        <div
                                                             className={`progress-bar bg-${getGradeColor(subject.grade)}`}
-                                                            role="progressbar" 
+                                                            role="progressbar"
                                                             style={{ width: `${subject.marks}%` }}
-                                                            aria-valuenow={subject.marks} 
-                                                            aria-valuemin="0" 
+                                                            aria-valuenow={subject.marks}
+                                                            aria-valuemin="0"
                                                             aria-valuemax="100"
                                                         >
                                                             {subject.marks}%
