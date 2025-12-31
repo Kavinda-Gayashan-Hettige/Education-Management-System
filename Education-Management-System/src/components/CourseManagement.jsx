@@ -20,7 +20,7 @@ function CourseManagement() {
         const fetchCourses = async () => {
             try {
                 
-                const response = await axios.get(`${BASE_URL}/courses/get-all`); 
+                const response = await axios.get(`${BASE_URL}/courses/get-all`);
                 setCourses(response.data);
                 setLoading(false);
             } catch (err) {
