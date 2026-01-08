@@ -14,12 +14,12 @@ function AdminPage() {
     active: true
   });
 
-  // Only ADMIN access
+  
   if (auth.role !== "ADMIN") {
     return <h2>Access Denied</h2>;
   }
 
-  // ================= FETCH ALL USERS =================
+  
   const loadUsers = async () => {
     setLoading(true);
     try {
@@ -37,7 +37,7 @@ function AdminPage() {
     loadUsers();
   }, []);
 
-  // ================= ADD USER =================
+  
   const addUser = async (e) => {
     e.preventDefault();
     try {
@@ -50,7 +50,7 @@ function AdminPage() {
     }
   };
 
-  // ================= DELETE USER =================
+ 
   const deleteUser = async (id) => {
     if (!window.confirm("Delete this user?")) return;
     try {
@@ -61,7 +61,7 @@ function AdminPage() {
     }
   };
 
-  // ================= ACTIVATE / DEACTIVATE =================
+ 
   const toggleActive = async (id, active) => {
     try {
       await axiosInstance.put(
@@ -73,7 +73,7 @@ function AdminPage() {
     }
   };
 
-  // ================= CHANGE ROLE =================
+  
   const changeRole = async (id, role) => {
     try {
       await axiosInstance.put(`/users/${id}/role?role=${role}`);
@@ -87,7 +87,7 @@ function AdminPage() {
     <div className="container mt-4">
       <h2>Admin User Management</h2>
 
-      {/* ADD USER */}
+     
       <form onSubmit={addUser} className="card p-3 mb-4">
         <h5>Add User</h5>
 
@@ -128,7 +128,7 @@ function AdminPage() {
         <button className="btn btn-primary">Add User</button>
       </form>
 
-      {/* USER TABLE */}
+      
       <h5>All Users</h5>
 
       {loading ? (

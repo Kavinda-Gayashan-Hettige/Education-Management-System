@@ -12,7 +12,7 @@ function Home() {
   
     useEffect(() => {
         const fetchRoleData = async () => {
-           
+            localStorage.clear();
             let endpoint = '';
             if (auth.role === 'ADMIN') {
                 endpoint = '/users/admin/data'; 
@@ -56,7 +56,29 @@ function Home() {
             </div>
             <p className="mt-3">Use the navigation bar above to access role-specific sections.</p>
         </div>
-       <div className="row"><img src="src\assets\ems-bg.png" alt="EMS Background" style={{ maxWidth: '100%' }} /></div>
+       {/* <div className="row"><img src="src\assets\ems-bg.png" alt="EMS Background" style={{ maxWidth: '100%' }} /></div> */}
+
+       <div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="src\assets\ems-bg.png" class="d-block w-100" alt="EMS Background"></img>
+    </div>
+    <div class="carousel-item">
+      <img src="src\assets\ems-bg2.png" class="d-block w-100" alt="EMS Background2"></img>
+    </div>
+    <div class="carousel-item">
+      <img src="src\assets\education.png" class="d-block w-100" alt="Education Background"></img>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
       
         <div className="row"><Footer /></div>
         </>
