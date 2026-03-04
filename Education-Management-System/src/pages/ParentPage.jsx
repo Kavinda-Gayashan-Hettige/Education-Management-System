@@ -47,7 +47,7 @@ function ParentPage() {
                             <p className="text-muted">Monitor your child's progress and activities</p>
                         </div>
                         <div className="text-end">
-                            <h4>Welcome, Mrs. Silva!</h4>
+                            <h4>Welcome, Mr. Piyal!</h4>
                             <small className="text-muted">Last login: Today, 10:30 AM</small>
                         </div>
                     </div>

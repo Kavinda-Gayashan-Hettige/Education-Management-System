@@ -219,6 +219,7 @@ function Reports() {
                                             onClick={printReport}
                                         >
                                             <i className="bi bi-printer"></i>
+                                            Download
                                         </button>
                                     </div>
                                 </div>
