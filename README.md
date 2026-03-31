@@ -37,15 +37,13 @@ This is the **Frontend** of the Education Management System, built using **React
 
 ---
 
-## 📸 Screenshots (Optional)
+## 📸 Screenshots
+
 > Add your project screenshots here to make the repo look more impressive!
-> 
-> | Login Page | Dashboard | User List |
-> |<img width="1912" height="913" alt="Screenshot 2026-01-15 180137" src="https://github.com/user-attachments/assets/0db893bc-5e79-4073-9bc0-71bb10fdf498" />
-|<img width="1905" height="910" alt="Screenshot 2026-01-15 180308" src="https://github.com/user-attachments/assets/cb3c6d5f-54da-4b84-96ee-5f6842b35e77" />
-|<img width="1912" height="916" alt="Screenshot 2026-01-15 180358" src="https://github.com/user-attachments/assets/63ac14e5-eab6-4615-a93e-c92dac09fc18" />
-|
-> | <img src="https://via.placeholder.com/200" width="200"> | <img src="https://via.placeholder.com/200" width="200"> | <img src="https://via.placeholder.com/200" width="200"> |
+
+| Login Page | Dashboard | User List |
+|------------|-----------|-----------|
+| <img width="300" alt="Login Page" src="https://github.com/user-attachments/assets/0db893bc-5e79-4073-9bc0-71bb10fdf498" /> | <img width="300" alt="Dashboard" src="https://github.com/user-attachments/assets/cb3c6d5f-54da-4b84-96ee-5f6842b35e77" /> | <img width="300" alt="User List" src="https://github.com/user-attachments/assets/63ac14e5-eab6-4615-a93e-c92dac09fc18" /> |
 
 ---
 
