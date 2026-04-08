@@ -10,34 +10,38 @@ function Home() {
     const [error, setError] = useState(null);
   
   
-    useEffect(() => {
-        const fetchRoleData = async () => {
-            localStorage.clear();
-            let endpoint = '';
-            if (auth.role === 'ADMIN') {
-                endpoint = '/users/admin/data'; 
-            } else if (auth.role === 'TEACHER') {
-                endpoint = '/users/teacher/data';
-            } else if (auth.role === 'STUDENT') {
-                endpoint = '/users/student/data';
-            } else {
-                setWelcomeMessage(`Welcome, ${auth.userName} (${auth.role})!`);
-                return;
-            }
+   useEffect(() => {
+    const fetchRoleData = async () => {
+      
 
-            try {
-              
-                const response = await axiosInstance.get(endpoint);
-                setWelcomeMessage(response.data);
-            } catch (err) {
-                console.error("Failed to fetch role data:", err);
-               
-                setError("Could not load specific role data. You may lack permission.");
-            }
-        };
+        let endpoint = '';
+        if (auth.role === 'ADMIN') {
+            endpoint = '/users/admin/data'; 
+        } else if (auth.role === 'TEACHER') {
+            endpoint = '/users/teacher/data';
+        } else if (auth.role === 'STUDENT') {
+            endpoint = '/users/student/data';
+        } else {
+            setWelcomeMessage(`Welcome, ${auth.userName} (${auth.role})!`);
+            return;
+        }
 
+        try {
+           
+            const response = await axiosInstance.get(endpoint);
+            setWelcomeMessage(response.data);
+            setError(null); 
+        } catch (err) {
+            console.error("Failed to fetch role data:", err);
+            setError("Could not load specific role data. You may lack permission.");
+        }
+    };
+
+   
+    if (auth.role) {
         fetchRoleData();
-    }, [auth.role, auth.userName, axiosInstance]);
+    }
+}, [auth.role, auth.userName, axiosInstance]);
 
     return (
         <>
@@ -58,25 +62,25 @@ function Home() {
         </div>
        {/* <div className="row"><img src="src\assets\ems-bg.png" alt="EMS Background" style={{ maxWidth: '100%' }} /></div> */}
 
-       <div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="src\assets\ems-bg.png" class="d-block w-100" alt="EMS Background"></img>
+       <div id="carouselExample" className="carousel slide">
+  <div className="carousel-inner">
+    <div className="carousel-item active">
+      <img src="src\assets\ems-bg.png" className="d-block w-100" alt="EMS Background"></img>
     </div>
-    <div class="carousel-item">
-      <img src="src\assets\ems-bg2.png" class="d-block w-100" alt="EMS Background2"></img>
+    <div className="carousel-item">
+      <img src="src\assets\ems-bg2.png" className="d-block w-100" alt="EMS Background2"></img>
     </div>
-    <div class="carousel-item">
-      <img src="src\assets\education.png" class="d-block w-100" alt="Education Background"></img>
+    <div className="carousel-item">
+      <img src="src\assets\education.png" className="d-block w-100" alt="Education Background"></img>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+  <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Next</span>
   </button>
 </div>
       

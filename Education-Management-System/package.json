@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.13.2",
+    "axios": "^1.14.0",
     "bootstrap": "^5.3.8",
     "edu.kgh": "file:",
     "react": "^19.2.0",
